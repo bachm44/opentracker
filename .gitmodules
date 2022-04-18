@@ -1,0 +1,3 @@
+[submodule "libowfat"]
+	path = libowfat
+	url = git@github.com:bachm44/libowfat.git
