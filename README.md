@@ -8,9 +8,13 @@ You need docker.
 
 **Steps to go:**
 
-`make docker`
+`make docker_build`
 
 That should leave you with an exectuable called `opentracker` and one debug version `opentracker.debug`.
+
+Or to build docker image
+
+`make docker_image`
 
 This tracker is open in a sense that everyone announcing a torrent is welcome to do so and will be informed about anyone else announcing the same torrent. Unless
 `-DWANT_IP_FROM_QUERY_STRING` is enabled (which is meant for debugging purposes only), only source IPs are accepted. The tracker implements a minimal set of

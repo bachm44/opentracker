@@ -86,6 +86,9 @@ clean:
 install:
 	install -m 755 opentracker $(BINDIR)
 
-docker:
-	docker build . -t opentracker/build
+docker_build:
+	docker build . -f Dockerfile.build -t opentracker/build
 	docker run --rm -v $(shell pwd):/app -it opentracker/build
+
+docker_image:
+	docker build . -t opentracker
