@@ -3,9 +3,9 @@
 CC?=gcc
 
 # Linux flavour
-# PREFIX?=/opt/diet
-# LIBOWFAT_HEADERS=$(PREFIX)/include
-# LIBOWFAT_LIBRARY=$(PREFIX)/lib
+PREFIX?=/opt/diet
+LIBOWFAT_HEADERS=$(PREFIX)/include
+LIBOWFAT_LIBRARY=$(PREFIX)/lib
 
 # BSD flavour
 # PREFIX?=/usr/local
@@ -13,9 +13,9 @@ CC?=gcc
 # LIBOWFAT_LIBRARY=$(PREFIX)/lib
 
 # Debug flavour
-PREFIX?=..
-LIBOWFAT_HEADERS=$(PREFIX)/libowfat
-LIBOWFAT_LIBRARY=$(PREFIX)/libowfat
+#PREFIX?=..
+#LIBOWFAT_HEADERS=$(PREFIX)/libowfat
+#LIBOWFAT_LIBRARY=$(PREFIX)/libowfat
 
 BINDIR?=$(PREFIX)/bin
 
@@ -85,3 +85,7 @@ clean:
 
 install:
 	install -m 755 opentracker $(BINDIR)
+
+docker:
+	docker build . -t opentracker/build
+	docker run --rm -v $(shell pwd):/app -it opentracker/build
