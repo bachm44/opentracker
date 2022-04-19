@@ -1,4 +1,5 @@
-FROM debian:buster
+# syntax=docker/dockerfile:1
+FROM debian:buster as build
 WORKDIR /app
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
@@ -7,4 +8,7 @@ COPY . .
 RUN make -C libowfat && make install -C libowfat
 RUN make && make install
 
-CMD ["/opt/diet/bin"]
+FROM debian:buster-slim as final
+COPY --from=build /opt/diet/bin /app/
+WORKDIR /app
+ENTRYPOINT ["/app/bin"]
